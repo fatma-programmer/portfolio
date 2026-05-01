@@ -1,0 +1,93 @@
+.nav-logo {
+  position: fixed;
+  top: 1.5rem;
+  left: 2rem;
+  z-index: 200;
+  font-family: var(--mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, var(--c1), var(--c2));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.menuBtn {
+  position: fixed;
+  top: 1.4rem;
+  right: 2rem;
+  z-index: 200;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid rgba(0,212,255,0.3);
+  backdrop-filter: blur(16px);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.menuBtn:hover {
+  border-color: var(--c1);
+  box-shadow: 0 0 18px rgba(0,212,255,0.3);
+}
+
+.menuBtn span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--c1);
+  transition: transform 0.4s cubic-bezier(0.77,0,0.18,1), opacity 0.3s, width 0.3s;
+}
+
+.menuBtn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menuBtn.open span:nth-child(2) { opacity: 0; width: 0; }
+.menuBtn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.navOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  background: rgba(0,0,0,0.96);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.45s cubic-bezier(0.77,0,0.18,1);
+}
+
+.navOverlay.open { opacity: 1; pointer-events: all; }
+
+.navOverlay a {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: rgba(200,220,255,0.3);
+  text-decoration: none;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.navOverlay a::after {
+  content: attr(data-label);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--c1), var(--c2), var(--c3));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.navOverlay a:hover { color: transparent; }
+.navOverlay a:hover::after { opacity: 1; }

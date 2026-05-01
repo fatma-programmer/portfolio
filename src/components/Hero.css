@@ -1,0 +1,147 @@
+/* الهيرو لازم يكون Full Width عشان الكانفاس يملأ الشاشة */
+#hero {
+  position: relative; 
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  overflow: hidden; /* ده السجن اللي بيمنع الكوكب ينزل تحت */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1; /* رتبة الهيرو */
+  max-width: none !important; /* إلغاء الـ 1100px للسكشن ده بس */
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: center;
+}
+
+#planetCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: -1; /* لازم سالب واحد عشان يفضل ورا الكلام */
+  pointer-events: none;
+}
+
+/* المحتوى هو اللي ياخد العرض المحدد */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  /* التعديل هنا لضمان السنترة */
+  margin-left: auto !important;
+  margin-right: auto !important;
+  
+  /* إضافة دي عشان الكلام نفسه يسنتر جوه الديف */
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;
+  
+  padding: 0 2rem;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0,255,179,0.07);
+  border: 1px solid rgba(0,255,179,0.28);
+  padding: 0.4rem 1.1rem;
+  border-radius: 100px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--c4);
+  margin-bottom: 2rem;
+  animation: fadeUp 0.9s ease both;
+}
+
+.pring {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--c4);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.pring::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--c4);
+  animation: rp 1.8s ease-out infinite;
+}
+
+@keyframes rp {
+  0%   { transform: scale(1);   opacity: 0.8; }
+  100% { transform: scale(2.6); opacity: 0;   }
+}
+
+.hero-name {
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  animation: fadeUp 0.9s 0.1s ease both;
+}
+
+.hn-plain {
+  color: #fff;
+  display: block;
+}
+
+.hn-glow {
+  display: block;
+  background: linear-gradient(135deg, var(--c1) 0%, var(--c2) 45%, var(--c3) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 40px rgba(0,212,255,0.55));
+}
+
+.hero-role {
+  font-family: var(--mono);
+  font-size: 1rem;
+  color: rgba(180,210,255,0.5);
+  margin-top: 1.2rem;
+  animation: fadeUp 0.9s 0.18s ease both;
+}
+
+.rc {
+  color: var(--c1);
+  animation: blink 1s infinite;
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--c1);
+  vertical-align: text-bottom;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: rgba(160,200,255,0.55);
+  max-width: 460px;
+  line-height: 1.9;
+  margin-top: 1.4rem;
+  animation: fadeUp 0.9s 0.26s ease both;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeUp 0.9s 0.34s ease both;
+}
