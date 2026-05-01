@@ -23,7 +23,7 @@ export default function About() {
             {chips.map(c => <span key={c} className="chip">{c}</span>)}
           </div>
           <div style={{ marginTop: '2rem' }}>
-            <a href="./fatmaahmed(2).pdf" download="Fatma_Ahmed_CV.pdf" style={{ textDecoration: 'none' }}>
+            <a href="./fatmaahmed(3).pdf" download="Fatma_Ahmed_CV.pdf" style={{ textDecoration: 'none' }}>
               <button className="big-btn btn-outline-big">Download CV ↓</button>
             </a>
           </div>
